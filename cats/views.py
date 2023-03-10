@@ -28,7 +28,7 @@ class APICatDetail(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     def put(self, request, pk):
-        cat = Cat.objects.get(pk)
+        cat = Cat.objects.get(id=pk)
         serializer = CatSerializer(cat, data=request.data)
         if serializer.is_valid():
             serializer.save()
