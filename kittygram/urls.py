@@ -1,10 +1,14 @@
 from django.urls import include, path
 
-from cats.views import APICat, APICatDetail
+from rest_framework.routers import SimpleRouter
+from cats.views import CatViewSet
 
+router = SimpleRouter() 
+
+router.register('cats', CatViewSet) 
+# router.register('owners', OwnerViewSet)
 urlpatterns = [
-   path('cats/', APICat.as_view()),
-   path('cats/<int:pk>/', APICatDetail.as_view()),
+    path('', include(router.urls)),
 ]
 
 
